@@ -2,7 +2,10 @@
 pipeline {
 
   agent any
-  
+
+  environment {
+        DOCKER_BUILDKIT = "1"
+  }
   parameters {
 	choice(name: 'action', choices: 'create\nrollback', description: 'Create/rollback of the deployment')
     string(name: 'ImageName', description: "Name of the docker build", defaultValue: "kubernetes-configmap-reload")
